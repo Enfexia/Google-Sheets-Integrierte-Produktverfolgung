@@ -174,7 +174,7 @@ h2 a {
       <th><h1>Alınan Tarih</h1></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="ilk">
 
   </tbody>
 </table>
@@ -183,6 +183,7 @@ h2 a {
   <script>
 
     var url = "https://docs.google.com/spreadsheet/pub?key=1Dxed9WwEjQVxVZJTSJOAF8iHmIOz3QIW-FqvwBseQRM&output=html";
+    window.setInterval(function(){
 var googleSpreadsheet = new GoogleSpreadsheet();
 googleSpreadsheet.url(url);
 googleSpreadsheet.load(function(result) {
@@ -204,7 +205,11 @@ $(function() {
       }else{
         durum="";
       }
-        var $tr = $('<tr>').append(
+
+  i = i + 1;
+              if($('.ilk').children().length < i){
+      
+              var $tr = $('<tr>').append(
             $('<td>').text(item.id),
             $('<td>').text(item.marka),
             $('<td>').text(item.i̇şdetayı),
@@ -213,10 +218,43 @@ $(function() {
             $('<td class=' + durum + '>').text(item.durum),
             $('<td>').text(item.öncelik),
             $('<td>').text(item.alınantarih)
-        ).appendTo('.container');
+        ).appendTo('.ilk');
+
+    }else{
+       
+
+    
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(1)').text(item.id);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(2)').text(item.marka);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(3)').text(item.i̇şdetayı);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(4)').text(item.teslimtarihi);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(5)').text(item.not);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(6)').removeClass().addClass( durum ).text(item.durum);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(7)').text(item.öncelik);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(8)').text(item.alınantarih);
+     
+  i = i - 1;
+                if(result.items[i].durum === "Aktif"){
+        durum="Aktif"
+      }else if(result.items[i].durum === "Beklemede"){
+        durum="Beklemede";
+      }else if(result.items[i].durum === "Onay bekliyor"){
+        durum="Onaybekliyor";
+      }else if(result.items[i].durum === "Sırada"){
+        durum="Sırada";
+      }else if(result.items[i].durum === "İptal"){
+        durum="İptal";
+      }else if(result.items[i].durum === "Kontrol"){
+        durum="Kontrol";
+      }else{
+        durum="";
+      }
+    }
+
     });
 });
 });
+}, 1000);
   </script>
 </body>
 </html>

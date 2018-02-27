@@ -7,4 +7,3 @@ for (i = 0; i < Durumlar.length; i++) {
 }
 });
 }, 1000);
-console.log("asd")

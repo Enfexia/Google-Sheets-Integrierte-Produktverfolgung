@@ -174,7 +174,7 @@ h2 a {
 			<th><h1>Alınan Tarih</h1></th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody class="ilk">
 
 	</tbody>
 </table>
@@ -223,14 +223,24 @@ h2 a {
 		'https://docs.google.com/spreadsheet/pub?key=1Dxed9WwEjQVxVZJTSJOAF8iHmIOz3QIW-FqvwBseQRM&output=html'  //faruk
 		];
 
+window.setInterval(function(){
 $.each(urls, function( index, value ) {
+x = 0
+
+
 
 var googleSpreadsheet = new GoogleSpreadsheet();
 googleSpreadsheet.url(urls[index]);
 googleSpreadsheet.load(function(result) {
-	console.log(result)
+	//console.log(result)
 $(function() {
+
+
     $.each(result.items, function(i, item) {
+    	x = x + result.items.length
+    	
+   	//console.log(i)
+
     	if(result.items[i].durum === "Aktif"){
     		durum="Aktif"
     	}else if(result.items[i].durum === "Beklemede"){
@@ -246,7 +256,22 @@ $(function() {
     	}else{
     		durum="";
     	}
-        var $tr = $('<tr>').append(
+
+    	url = "Ege"
+    	i = i + 1
+    	if(index == 1){
+    	i = i + 4
+    	url="Faruk"
+		//console.log(x/4)
+		}else if(index == 2){
+		i = i + 8
+		}
+//console.log(i)
+
+
+            	if($('.ilk').children().length < i){
+			
+			        var $tr = $('<tr>').append(
             $('<td>').text(item.id),
             $('<td>').text(item.marka),
             $('<td>').text(item.i̇şdetayı),
@@ -255,12 +280,52 @@ $(function() {
             $('<td class=' + durum + '>').text(item.durum),
             $('<td>').text(item.öncelik),
             $('<td>').text(item.alınantarih)
-        ).appendTo('.container');
+        ).appendTo('.ilk');
+
+		}else{
+      	//console.log(i) onclick="window.open('https://www.willmaster.com')"
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(1)').unbind('onclick').attr('onclick', "window.open('/" + url  + ".html')").text(item.id);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(2)').text(item.marka);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(3)').text(item.i̇şdetayı);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(4)').text(item.teslimtarihi);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(5)').text(item.not);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(6)').removeClass().addClass( durum ).text(item.durum);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(7)').text(item.öncelik);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(8)').text(item.alınantarih);
+     
+
+
+    	if(index == 1){
+    	i = i - 5
+		//console.log(x/4)
+		}else if(index == 2){
+		i = i - 9
+		}else{
+			i = i - 1
+		}
+		console.log(i)
+               	if(result.items[i].durum === "Aktif"){
+    		durum="Aktif"
+    	}else if(result.items[i].durum === "Beklemede"){
+    		durum="Beklemede";
+    	}else if(result.items[i].durum === "Onay bekliyor"){
+    		durum="Onaybekliyor";
+    	}else if(result.items[i].durum === "Sırada"){
+    		durum="Sırada";
+    	}else if(result.items[i].durum === "İptal"){
+    		durum="İptal";
+    	}else if(result.items[i].durum === "Kontrol"){
+    		durum="Kontrol";
+    	}else{
+    		durum="";
+    	}
+		}
+
     });
 });
 });
 });
-
+}, 1000);
 Durumlar = ["Aktif",'Beklemede','Onaybekliyor','Sırada','İptal','Kontrol']
 
 	</script>
