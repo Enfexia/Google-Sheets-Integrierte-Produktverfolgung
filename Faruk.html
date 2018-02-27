@@ -179,54 +179,13 @@ h2 a {
 	</tbody>
 </table>
 
-<table class="olay">
-	<thead>
-		<tr>
-			<th><h1>Durum</h1></th>
-			<th><h1>Sayi</h1></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Aktif</td>
-			<td class="Aktifdurum">.</td>
-		</tr>
-		<tr>
-			<td>Beklemede</td>
-			<td class="Beklemededurum">.</td>
-		</tr>
-		<tr>
-			<td>Onay bekliyor</td>
-			<td class="Onaybekliyordurum">.</td>
-		</tr>
-		<tr>
-			<td>Sırada</td>
-			<td class="Sıradadurum">.</td>
-		</tr>
-		<tr>
-			<td>İptal</td>
-			<td class="İptaldurum">.</td>
-		</tr>
-		<tr>
-			<td>Kontrol</td>
-			<td class="Kontroldurum">.</td>
-		</tr>
-	</tbody>
-</table>
-
-
 
 	<script>
 
-		var urls = [
-		"https://docs.google.com/spreadsheet/pub?key=1RlUqCfm5GKEoVBBddtyXQ-_I1n85rZTEQddG0r8FvD4&output=html", //ege
-		'https://docs.google.com/spreadsheet/pub?key=1Dxed9WwEjQVxVZJTSJOAF8iHmIOz3QIW-FqvwBseQRM&output=html'  //faruk
-		];
-
-$.each(urls, function( index, value ) {
-
+		var url = "https://docs.google.com/spreadsheet/pub?key=1Dxed9WwEjQVxVZJTSJOAF8iHmIOz3QIW-FqvwBseQRM&output=html";
+window.setInterval(function(){		
 var googleSpreadsheet = new GoogleSpreadsheet();
-googleSpreadsheet.url(urls[index]);
+googleSpreadsheet.url(url);
 googleSpreadsheet.load(function(result) {
 	console.log(result)
 $(function() {
@@ -259,11 +218,6 @@ $(function() {
     });
 });
 });
-});
-
-Durumlar = ["Aktif",'Beklemede','Onaybekliyor','Sırada','İptal','Kontrol']
-
 	</script>
-<script  src="durumlar.js"></script>
 </body>
 </html>

