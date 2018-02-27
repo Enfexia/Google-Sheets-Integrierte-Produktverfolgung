@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://rawgit.com/Enfexia/Html5-Css3/master/navin.js"></script>
-	<script src="jquery.google.spreadsheet.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://rawgit.com/Enfexia/Html5-Css3/master/navin.js"></script>
+  <script src="jquery.google.spreadsheet.min.js"></script>
 
 <style>
-/*	
-	Side Navigation Menu V2, RWD
-	===================
-	License:
-	https://goo.gl/EaUPrt
-	===================
-	Author: @PableraShow
+/*  
+  Side Navigation Menu V2, RWD
+  ===================
+  License:
+  https://goo.gl/EaUPrt
+  ===================
+  Author: @PableraShow
 
  */
 
@@ -55,74 +55,74 @@ h2 a {
 }
 
 .İptal{
-	color:red;
+  color:red;
 }
 
 .Kontrol{
-	color:green;
+  color:green;
 }
 
 .Beklemede{
-	color:purple;
+  color:purple;
 }
 
 .Onaybekliyor{
-	color:black;
+  color:black;
 }
 
 .Sırada{
-	color:yellow;
+  color:yellow;
 }
 
 .Aktif{
-	color:blue;
+  color:blue;
 }
 
 .blue { color: #185875; }
 .yellow { color: #FFF842; }
 
 .olay th h1, .container th h1 {
-	  font-weight: bold;
-	  font-size: 1em;
+    font-weight: bold;
+    font-size: 1em;
   text-align: left;
   color: #185875;
 }
 
 .olay td, .container td {
-	  font-weight: normal;
-	  font-size: 1em;
+    font-weight: normal;
+    font-size: 1em;
   -webkit-box-shadow: 0 2px 2px -2px #0E1119;
-	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
-	        box-shadow: 0 2px 2px -2px #0E1119;
+     -moz-box-shadow: 0 2px 2px -2px #0E1119;
+          box-shadow: 0 2px 2px -2px #0E1119;
 }
 
 .olay, .container {
-	  text-align: left;
-	  overflow: hidden;
-	  width: 80%;
-	  margin: 0 auto;
+    text-align: left;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
   display: table;
   padding: 0 0 8em 0;
 }
 
 .olay td, .olay th, .container td, .container th {
-	  padding-bottom: 2%;
-	  padding-top: 2%;
+    padding-bottom: 2%;
+    padding-top: 2%;
   padding-left:2%;  
 }
 
 /* Background-color of the odd rows */
 .olay tr:nth-child(odd), .container tr:nth-child(odd) {
-	  background-color: #323C50;
+    background-color: #323C50;
 }
 
 /* Background-color of the even rows */
 .olay  tr:nth-child(even), .container tr:nth-child(even) {
-	  background-color: #2C3446;
+    background-color: #2C3446;
 }
 
 .olay th, .container th {
-	  background-color: #1F2739;
+    background-color: #1F2739;
 }
 
 .olay td:first-child, .container td:first-child { color: #FB667A; }
@@ -130,8 +130,8 @@ h2 a {
 .olay tr:hover, .container tr:hover {
    background-color: #464A52;
 -webkit-box-shadow: 0 6px 6px -6px #0E1119;
-	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
-	        box-shadow: 0 6px 6px -6px #0E1119;
+     -moz-box-shadow: 0 6px 6px -6px #0E1119;
+          box-shadow: 0 6px 6px -6px #0E1119;
 }
 
 .olay  td:hover , .container td:hover {
@@ -143,8 +143,8 @@ h2 a {
   transform: translate3d(6px, -6px, 0);
   
   transition-delay: 0s;
-	  transition-duration: 0.4s;
-	  transition-property: all;
+    transition-duration: 0.4s;
+    transition-property: all;
   transition-timing-function: line;
 }
 
@@ -162,49 +162,48 @@ h2 a {
 <h2>Şuradan sheetsi düzeltince bunlarda değişiyo cnm <a href="https://docs.google.com/spreadsheets/d/1RlUqCfm5GKEoVBBddtyXQ-_I1n85rZTEQddG0r8FvD4/edit?usp=sharing" target="_blank">Üstüme basss</a></h2>
 
 <table class="container">
-	<thead>
-		<tr>
-			<th><h1>Sorumlu</h1></th>
-			<th><h1>Marka</h1></th>
-			<th><h1>İş Detayı</h1></th>
-			<th><h1>Teslim Tarihi</h1></th>
-			<th><h1>Not</h1></th>
-			<th><h1>Durum</h1></th>
-			<th><h1>Öncelik</h1></th>
-			<th><h1>Alınan Tarih</h1></th>
-		</tr>
-	</thead>
-	<tbody>
+  <thead>
+    <tr>
+      <th><h1>Sorumlu</h1></th>
+      <th><h1>Marka</h1></th>
+      <th><h1>İş Detayı</h1></th>
+      <th><h1>Teslim Tarihi</h1></th>
+      <th><h1>Not</h1></th>
+      <th><h1>Durum</h1></th>
+      <th><h1>Öncelik</h1></th>
+      <th><h1>Alınan Tarih</h1></th>
+    </tr>
+  </thead>
+  <tbody>
 
-	</tbody>
+  </tbody>
 </table>
 
 
-	<script>
+  <script>
 
-		var url = "https://docs.google.com/spreadsheet/pub?key=1Dxed9WwEjQVxVZJTSJOAF8iHmIOz3QIW-FqvwBseQRM&output=html";
-window.setInterval(function(){		
+    var url = "https://docs.google.com/spreadsheet/pub?key=1Dxed9WwEjQVxVZJTSJOAF8iHmIOz3QIW-FqvwBseQRM&output=html";
 var googleSpreadsheet = new GoogleSpreadsheet();
 googleSpreadsheet.url(url);
 googleSpreadsheet.load(function(result) {
-	console.log(result)
+  console.log(result)
 $(function() {
     $.each(result.items, function(i, item) {
-    	if(result.items[i].durum === "Aktif"){
-    		durum="Aktif"
-    	}else if(result.items[i].durum === "Beklemede"){
-    		durum="Beklemede";
-    	}else if(result.items[i].durum === "Onay bekliyor"){
-    		durum="Onaybekliyor";
-    	}else if(result.items[i].durum === "Sırada"){
-    		durum="Sırada";
-    	}else if(result.items[i].durum === "İptal"){
-    		durum="İptal";
-    	}else if(result.items[i].durum === "Kontrol"){
-    		durum="Kontrol";
-    	}else{
-    		durum="";
-    	}
+      if(result.items[i].durum === "Aktif"){
+        durum="Aktif"
+      }else if(result.items[i].durum === "Beklemede"){
+        durum="Beklemede";
+      }else if(result.items[i].durum === "Onay bekliyor"){
+        durum="Onaybekliyor";
+      }else if(result.items[i].durum === "Sırada"){
+        durum="Sırada";
+      }else if(result.items[i].durum === "İptal"){
+        durum="İptal";
+      }else if(result.items[i].durum === "Kontrol"){
+        durum="Kontrol";
+      }else{
+        durum="";
+      }
         var $tr = $('<tr>').append(
             $('<td>').text(item.id),
             $('<td>').text(item.marka),
@@ -218,6 +217,6 @@ $(function() {
     });
 });
 });
-	</script>
+  </script>
 </body>
 </html>
