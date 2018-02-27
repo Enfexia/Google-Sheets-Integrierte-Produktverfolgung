@@ -8,15 +8,6 @@
   <script src="jquery.google.spreadsheet.min.js"></script>
 
 <style>
-/*  
-  Side Navigation Menu V2, RWD
-  ===================
-  License:
-  https://goo.gl/EaUPrt
-  ===================
-  Author: @PableraShow
-
- */
 
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
@@ -111,12 +102,10 @@ h2 a {
   padding-left:2%;  
 }
 
-/* Background-color of the odd rows */
 .olay tr:nth-child(odd), .container tr:nth-child(odd) {
     background-color: #323C50;
 }
 
-/* Background-color of the even rows */
 .olay  tr:nth-child(even), .container tr:nth-child(even) {
     background-color: #2C3446;
 }
@@ -181,7 +170,23 @@ h2 a {
 
 
   <script>
+    /* 
+    
+    Yeni Bir kullanıcı oluşturduğunda bu sayfayı kopyala sadece aşşağıdaki url yi değiştir.
 
+    Url Nasıl Değişir;
+
+    Bu şekilde URL alabilmek için yeni bi sheet oluştur sonra paylaş(share)
+
+    Sonra File -> Publish to web -> Publish
+
+    Sonrasında "Sheetin adres çubuğundaki url sinin" /spreadsheets/d/ ile /edit arasını alıp
+
+    https://docs.google.com/spreadsheet/pub?key= BURAYA  &output=html
+
+    Yapıştır
+
+    */
     var url = "https://docs.google.com/spreadsheet/pub?key=1Dxed9WwEjQVxVZJTSJOAF8iHmIOz3QIW-FqvwBseQRM&output=html";
     window.setInterval(function(){
 var googleSpreadsheet = new GoogleSpreadsheet();
@@ -254,7 +259,10 @@ $(function() {
     });
 });
 });
-}, 1000);
+}, 
+/* Sitenin Yenilenme süresi (1sn'den az olmasın google captcha istiyo yoksa)*/
+
+2000);
   </script>
 </body>
 </html>
