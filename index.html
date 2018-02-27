@@ -284,7 +284,7 @@ $(function() {
 
 		}else{
       	//console.log(i) onclick="window.open('https://www.willmaster.com')"
-            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(1)').unbind('onclick').attr('onclick', "window.open('/" + url  + ".html')").text(item.id);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(1)').unbind('onclick').attr('onclick', "window.open('/sheet/" + url  + ".html')").text(item.id);
             $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(2)').text(item.marka);
             $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(3)').text(item.i̇şdetayı);
             $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(4)').text(item.teslimtarihi);
