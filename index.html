@@ -260,6 +260,10 @@ $(function() {
 		i = i + ahmet + faruk + ege + 1
 		url="Mehmet"
 		}
+
+
+
+
             	if($('.ilk').children().length < i){
 			
 			        var $tr = $('<tr>').append(
@@ -272,6 +276,8 @@ $(function() {
             $('<td>').text(item.öncelik),
             $('<td>').text(item.alınantarih)
         ).appendTo('.ilk');
+
+
 		}else{
             $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(1)').unbind('onclick').attr('onclick', "window.open('/sheet/" + url  + ".html')").text(item.id);
             $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(2)').text(item.marka);
@@ -281,13 +287,25 @@ $(function() {
             $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(6)').removeClass().addClass( durum ).text(item.durum);
             $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(7)').text(item.öncelik);
             $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(8)').text(item.alınantarih);
+     a = i + 1
+
+
+
+     /* Buraya'da + can yapman gerekliyor */
      
+	        for (a; a == (ege + ahmet + faruk+ mehmet); a++) { 
+          $('body > table.container > tbody > tr:nth-child('+ a +')').remove()
+     		 }
+
+
+
 	/*
 		Bu döngüyede can'ı eklemen gerekiyor
 		else if(index == 4){
 		i = i - ahmet - faruk - ege - 1 - bi önceki kişinin adı (Mehmet)
 		url="Can"
 		}
+
     	*/
     	if(index == 0){
     	i = i - 1
