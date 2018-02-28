@@ -169,7 +169,7 @@ h2 a {
 </table>
 
 
-	<script>
+  <script>
     /* 
     
     Yeni Bir kullanıcı oluşturduğunda bu sayfayı kopyala sadece aşşağıdaki url yi değiştir.
@@ -187,12 +187,12 @@ h2 a {
     Yapıştır
 
     */
-		var url = "https://docs.google.com/spreadsheet/pub?key=1ZE4BSBtEEDfYBZVJ1ilf7M7vaB33Zyh3qbzCElcIA2w&output=html";
+    var url = "https://docs.google.com/spreadsheet/pub?key=1ZE4BSBtEEDfYBZVJ1ilf7M7vaB33Zyh3qbzCElcIA2w&output=html";
     window.setInterval(function(){
 var googleSpreadsheet = new GoogleSpreadsheet();
 googleSpreadsheet.url(url);
 googleSpreadsheet.load(function(result) {
-	console.log(result)
+
 $(function() {
     $.each(result.items, function(i, item) {
       if(result.items[i].durum === "Aktif"){
@@ -225,7 +225,7 @@ $(function() {
             $('<td>').text(item.alınantarih)
         ).appendTo('.ilk');
 
-    }else{
+    }else if($('.ilk').children().length >= i){
        
 
     
@@ -237,8 +237,15 @@ $(function() {
             $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(6)').removeClass().addClass( durum ).text(item.durum);
             $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(7)').text(item.öncelik);
             $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(8)').text(item.alınantarih);
-     
-  i = i - 1;
+   i++
+   console.log(i)
+   console.log($('.ilk').children().length)
+    for (i; i <= $('.ilk').children().length; i++) { 
+          $('body > table.container > tbody > tr:nth-child('+ i +')').remove()
+      }
+  i = i - 2;
+
+  
                 if(result.items[i].durum === "Aktif"){
         durum="Aktif"
       }else if(result.items[i].durum === "Beklemede"){
@@ -263,6 +270,6 @@ $(function() {
 /* Sitenin Yenilenme süresi (1sn'den az olmasın google captcha istiyo yoksa)*/
 
 2000);
-	</script>
+  </script>
 </body>
 </html>
