@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Google Sheets Integrierte Produktverfolgung</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://rawgit.com/Enfexia/Html5-Css3/master/navin.js"></script>
 	<script src="jquery.google.spreadsheet.js"></script>
 
 <style>
@@ -18,14 +17,14 @@ body {
   background-color:#1F2739;
 }
 h1 {
-  font-size:3em; 
+  font-size:3em;
   font-weight: 300;
   line-height:1em;
   text-align: center;
   color: #4DC3FA;
 }
 h2 {
-  font-size:1em; 
+  font-size:1em;
   font-weight: 300;
   text-align: center;
   display: block;
@@ -83,7 +82,7 @@ h2 a {
 .olay td, .olay th, .container td, .container th {
 	  padding-bottom: 2%;
 	  padding-top: 2%;
-  padding-left:2%;  
+  padding-left:2%;
 }
 .olay tr:nth-child(odd), .container tr:nth-child(odd) {
 	  background-color: #323C50;
@@ -105,10 +104,10 @@ h2 a {
   background-color: #FFF842;
   color: #403E10;
   font-weight: bold;
-  
+
   box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
   transform: translate3d(6px, -6px, 0);
-  
+
   transition-delay: 0s;
 	  transition-duration: 0.4s;
 	  transition-property: all;
@@ -124,20 +123,18 @@ h2 a {
 <body>
 
 
-<h1><span class="blue"><span class="yellow">Ad Koymadım</pan></h1>
-<h2>Şuradan sheetsi düzeltince bunlarda değişiyo cnm <a href="https://docs.google.com/spreadsheets/d/1RlUqCfm5GKEoVBBddtyXQ-_I1n85rZTEQddG0r8FvD4/edit?usp=sharing" target="_blank">Üstüme basss</a></h2>
+<h1><span class="blue"><span class="yellow">Die Warenliste</pan></h1>
+<h2><a href="https://docs.google.com/spreadsheets/d/1RlUqCfm5GKEoVBBddtyXQ-_I1n85rZTEQddG0r8FvD4/edit?usp=sharing" target="_blank">Klicken Sie hier</a>, um Produkte zu bearbeiten.</h2>
 
 <table class="container">
 	<thead>
 		<tr>
-			<th><h1>Sorumlu</h1></th>
-			<th><h1>Marka</h1></th>
-			<th><h1>İş Detayı</h1></th>
-			<th><h1>Teslim Tarihi</h1></th>
-			<th><h1>Not</h1></th>
-			<th><h1>Durum</h1></th>
-			<th><h1>Öncelik</h1></th>
-			<th><h1>Alınan Tarih</h1></th>
+			<th><h1>Mitarbeiter</h1></th>
+			<th><h1>Artikel Nr.</h1></th>
+			<th><h1>Produkt</h1></th>
+			<th><h1>Live</h1></th>
+			<th><h1>Notiz</h1></th>
+			<th><h1>Status</h1></th>
 		</tr>
 	</thead>
 	<tbody class="ilk">
@@ -148,33 +145,33 @@ h2 a {
 <table class="olay">
 	<thead>
 		<tr>
-			<th><h1>Durum</h1></th>
-			<th><h1>Sayi</h1></th>
+			<th><h1>Status</h1></th>
+			<th><h1>Anzahl</h1></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>Aktif</td>
+			<td>Aktiv</td>
 			<td class="Aktifdurum">.</td>
 		</tr>
 		<tr>
-			<td>Beklemede</td>
+			<td>Ausstehend</td>
 			<td class="Beklemededurum">.</td>
 		</tr>
 		<tr>
-			<td>Onay bekliyor</td>
+			<td>Warten auf die Genehmigung</td>
 			<td class="Onaybekliyordurum">.</td>
 		</tr>
 		<tr>
-			<td>Sırada</td>
+			<td>in Reihe</td>
 			<td class="Sıradadurum">.</td>
 		</tr>
 		<tr>
-			<td>İptal</td>
+			<td>Abgesagt</td>
 			<td class="İptaldurum">.</td>
 		</tr>
 		<tr>
-			<td>Kontrol</td>
+			<td>Kontrolle</td>
 			<td class="Kontroldurum">.</td>
 		</tr>
 	</tbody>
@@ -184,7 +181,7 @@ h2 a {
 
 	<script>
 		var urls = [
-		/* 
+		/*
 		Bu şekilde URL alabilmek için yeni bi sheet oluştur sonra paylaş(share)
 		Sonra File -> Publish to web -> Publish
 		Sonrasında "Sheetin adres çubuğundaki url sinin" /spreadsheets/d/ ile /edit arasını alıp
@@ -200,8 +197,9 @@ window.setInterval(function(){
 $.each(urls, function( index, value ) {
 var googleSpreadsheet = new GoogleSpreadsheet();
 googleSpreadsheet.url(urls[index]);
+
 googleSpreadsheet.load(function(result) {
-/* 
+/*
 Birisini eklemek istersen urls ye dosyanın url sini ekle sonra aşşağıdaki
 if e bi döngü daha ekle
 else if(index == 4){
@@ -209,6 +207,7 @@ else if(index == 4){
 	}
 gibi
 */
+console.log(result)
 	if(index == 0){
 		ege = result.items.length;
 	}else if(index == 1){
@@ -220,25 +219,25 @@ gibi
 	}
 $(function() {
     $.each(result.items, function(i, item) {
-    
-    	
-   
-    	if(result.items[i].durum === "Aktif"){
+
+
+
+    	if(result.items[i].status === "Aktiv"){
     		durum="Aktif"
-    	}else if(result.items[i].durum === "Beklemede"){
+    	}else if(result.items[i].status === "Ausstehend"){
     		durum="Beklemede";
-    	}else if(result.items[i].durum === "Onay bekliyor"){
+    	}else if(result.items[i].status === "Warten auf die Genehmigung"){
     		durum="Onaybekliyor";
-    	}else if(result.items[i].durum === "Sırada"){
+    	}else if(result.items[i].status === "in Reihe"){
     		durum="Sırada";
-    	}else if(result.items[i].durum === "İptal"){
+    	}else if(result.items[i].status === "Abgesagt"){
     		durum="İptal";
-    	}else if(result.items[i].durum === "Kontrol"){
+    	}else if(result.items[i].status === "Kontrolle"){
     		durum="Kontrol";
     	}else{
     		durum="";
     	}
-    
+
     	/*
 		Bu döngüyede can'ı eklemen gerekiyor
 		else if(index == 4){
@@ -246,7 +245,7 @@ $(function() {
 		url="Can"
 		}
     	*/
-    	
+
     	if(index == 0){
     	i = i + 1
     	url = "Ege"
@@ -265,35 +264,31 @@ $(function() {
 
 
             	if($('.ilk').children().length < i){
-			
+
 			        var $tr = $('<tr>').append(
             $('<td>').text(item.id),
-            $('<td>').text(item.marka),
-            $('<td>').text(item.i̇şdetayı),
-            $('<td>').text(item.teslimtarihi),
-            $('<td>').text(item.not),
-            $('<td class=' + durum + '>').text(item.durum),
-            $('<td>').text(item.öncelik),
-            $('<td>').text(item.alınantarih)
+            $('<td>').text(item.artikelnr),
+            $('<td>').text(item.produkt),
+            $('<td>').text(item.live),
+            $('<td>').text(item.notiz),
+            $('<td class=' + durum + '>').text(item.status)
         ).appendTo('.ilk');
 
 
 		}else{
             $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(1)').unbind('onclick').attr('onclick', "window.open('/sheet/" + url  + ".html')").text(item.id);
-            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(2)').text(item.marka);
-            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(3)').text(item.i̇şdetayı);
-            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(4)').text(item.teslimtarihi);
-            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(5)').text(item.not);
-            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(6)').removeClass().addClass( durum ).text(item.durum);
-            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(7)').text(item.öncelik);
-            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(8)').text(item.alınantarih);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(2)').text(item.artikelnr);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(3)').text(item.produkt);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(4)').text(item.live);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(5)').text(item.notiz);
+            $('body > table.container > tbody > tr:nth-child('+ i +') > td:nth-child(6)').removeClass().addClass( durum ).text(item.status);
      a = i + 1
 
 
 
      /* Buraya'da + can yapman gerekliyor */
-     
-	        for (a; a == (ege + ahmet + faruk+ mehmet); a++) { 
+
+	        for (a; a == (ege + ahmet + faruk+ mehmet); a++) {
           $('body > table.container > tbody > tr:nth-child('+ a +')').remove()
      		 }
 
@@ -316,28 +311,28 @@ $(function() {
 		}else if(index == 3){
 			i = i - ege - ahmet - faruk - 1
 		}
-		
-               	if(result.items[i].durum === "Aktif"){
-    		durum="Aktif"
-    	}else if(result.items[i].durum === "Beklemede"){
-    		durum="Beklemede";
-    	}else if(result.items[i].durum === "Onay bekliyor"){
-    		durum="Onaybekliyor";
-    	}else if(result.items[i].durum === "Sırada"){
-    		durum="Sırada";
-    	}else if(result.items[i].durum === "İptal"){
-    		durum="İptal";
-    	}else if(result.items[i].durum === "Kontrol"){
-    		durum="Kontrol";
-    	}else{
-    		durum="";
-    	}
+
+		if(result.items[i].status === "Aktiv"){
+			durum="Aktif"
+		}else if(result.items[i].status === "Ausstehend"){
+			durum="Beklemede";
+		}else if(result.items[i].status === "Warten auf die Genehmigung"){
+			durum="Onaybekliyor";
+		}else if(result.items[i].status === "in Reihe"){
+			durum="Sırada";
+		}else if(result.items[i].status === "Abgesagt"){
+			durum="İptal";
+		}else if(result.items[i].status === "Kontrolle"){
+			durum="Kontrol";
+		}else{
+			durum="";
+		}
 		}
     });
 });
 });
 });
-}, 
+},
 /* Sitenin Yenilenme süresi (1sn'den az olmasın google captcha istiyo yoksa)*/
 2000);
 Durumlar = ["Aktif",'Beklemede','Onaybekliyor','Sırada','İptal','Kontrol']
